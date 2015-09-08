@@ -35,6 +35,8 @@
 		6401446A1B9E3A1C00FCBE29 /* SwifterTrends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401444E1B9E3A1C00FCBE29 /* SwifterTrends.swift */; };
 		6401446B1B9E3A1C00FCBE29 /* SwifterTweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401444F1B9E3A1C00FCBE29 /* SwifterTweets.swift */; };
 		6401446C1B9E3A1C00FCBE29 /* SwifterUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144501B9E3A1C00FCBE29 /* SwifterUsers.swift */; };
+		640144731B9F643100FCBE29 /* SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144721B9F643100FCBE29 /* SwipeableCell.swift */; };
+		640144761B9F8D5A00FCBE29 /* UIView+Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */; };
 		64C76C6B1B9E03D90057FCAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6A1B9E03D90057FCAC /* AppDelegate.swift */; };
 		64C76C6E1B9E03D90057FCAC /* Twitternator2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6C1B9E03D90057FCAC /* Twitternator2.xcdatamodeld */; };
 		64C76C701B9E03D90057FCAC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6F1B9E03D90057FCAC /* LoginViewController.swift */; };
@@ -91,6 +93,9 @@
 		6401444F1B9E3A1C00FCBE29 /* SwifterTweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterTweets.swift; sourceTree = "<group>"; };
 		640144501B9E3A1C00FCBE29 /* SwifterUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwifterUsers.swift; sourceTree = "<group>"; };
 		6401446E1B9E42F000FCBE29 /* Twitternator2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twitternator2-Bridging-Header.h"; sourceTree = "<group>"; };
+		640144721B9F643100FCBE29 /* SwipeableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCell.swift; sourceTree = "<group>"; };
+		640144741B9F8D5A00FCBE29 /* UIView+Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Debugging.h"; sourceTree = "<group>"; };
+		640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugging.m"; sourceTree = "<group>"; };
 		64C76C651B9E03D90057FCAC /* Twitternator2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitternator2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C76C691B9E03D90057FCAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C76C6A1B9E03D90057FCAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -204,10 +209,13 @@
 				64C76C6A1B9E03D90057FCAC /* AppDelegate.swift */,
 				64C76C6F1B9E03D90057FCAC /* LoginViewController.swift */,
 				64C76C981B9E16C20057FCAC /* FeedViewController.swift */,
+				640144721B9F643100FCBE29 /* SwipeableCell.swift */,
 				64C76C711B9E03D90057FCAC /* Main.storyboard */,
 				64C76C761B9E03D90057FCAC /* LaunchScreen.xib */,
 				64C76C741B9E03D90057FCAC /* Images.xcassets */,
 				64C76C681B9E03D90057FCAC /* Supporting Files */,
+				640144741B9F8D5A00FCBE29 /* UIView+Debugging.h */,
+				640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */,
 			);
 			path = Twitternator2;
 			sourceTree = "<group>";
@@ -362,12 +370,14 @@
 				6401445E1B9E3A1C00FCBE29 /* SwifterHelp.swift in Sources */,
 				640144511B9E3A1C00FCBE29 /* Dictionary+Swifter.swift in Sources */,
 				6401445D1B9E3A1C00FCBE29 /* SwifterFollowers.swift in Sources */,
+				640144761B9F8D5A00FCBE29 /* UIView+Debugging.m in Sources */,
 				64C76C701B9E03D90057FCAC /* LoginViewController.swift in Sources */,
 				640144671B9E3A1C00FCBE29 /* SwifterStreaming.swift in Sources */,
 				6401445A1B9E3A1C00FCBE29 /* SwifterClientProtocol.swift in Sources */,
 				640144581B9E3A1C00FCBE29 /* SwifterAppOnlyClient.swift in Sources */,
 				64C76C6B1B9E03D90057FCAC /* AppDelegate.swift in Sources */,
 				640144651B9E3A1C00FCBE29 /* SwifterSearch.swift in Sources */,
+				640144731B9F643100FCBE29 /* SwipeableCell.swift in Sources */,
 				640144631B9E3A1C00FCBE29 /* SwifterPlaces.swift in Sources */,
 				640144691B9E3A1C00FCBE29 /* SwifterTimelines.swift in Sources */,
 				640144601B9E3A1C00FCBE29 /* SwifterLists.swift in Sources */,

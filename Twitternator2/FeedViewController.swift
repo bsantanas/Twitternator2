@@ -12,13 +12,74 @@ import TwitterKit
 class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView:UITableView!
-    var authenticationRequired = true
+    var authenticationRequired = false
     var swifter:Swifter?
-    var tweets = [TWTRTweet]()
+    var tweets = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for i in 0...100 {
+            tweets.append(i)
+        }
+    }
+    
+    //MARK:- API Methods
+    func startStreamingWithFilters(tracks:[String]) {
+        swifter!.postStatusesFilterWithFollow(follow: nil, track: tracks, locations:["50.87, -1.47,50.95, -1.33"], delimited: false, stallWarnings: true, progress: {
+            (status: Dictionary<String, JSONValue>?) in
+            
+            println(status)
+            
+            }, stallWarningHandler: {
+                (code: String?, message: String?, percentFull: Int?) in
+                
+                print(percentFull)
+                
+            }, failure: { error in
+                println(error)
+        })
+
+    }
+    
+    //MARK:- Table View Data Source & Delegate
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let tweet = tweets[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! SwipeableCell
+        cell.index = tweet
+        cell.delegate = self
+        //cell.tweetView.delegate = self
+        return cell
+    }
+    
+    var previous = "0"
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let first = tableView.visibleCells().first! as! UITableViewCell
+        if first.textLabel?.text != previous {
+            //previous = first.textLabel!.text!
+            //println(previous)
+        }
+    }
+}
+
+//MARK:- Extensions: SwipeCellDelegate
+extension FeedViewController: SwipeCellDelegate {
+    func removeCellAtIndex(index: Int) {
+        let indexToRemove = find(tweets, index)
+        tweets.removeAtIndex(indexToRemove!)
+        tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexToRemove!, inSection: 0)], withRowAnimation: .Top)
+    }
+}
+
+//MARK: StreamingAPI
+extension FeedViewController {
+    
+    func authorizeStreaming() {
         if authenticationRequired {
             var oauthToken : String? = NSUserDefaults.standardUserDefaults().valueForKey("oauth_token") as? String
             var oauthTokenSecret : String?  = NSUserDefaults.standardUserDefaults().valueForKey("oauth_secret") as? String
@@ -55,43 +116,9 @@ class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableVie
                         
                 })
                 
-                
             }
             
         }
-    }
-    
-    
-    //MARK:- API Methods
-    func startStreamingWithFilters(tracks:[String]) {
-        swifter!.postStatusesFilterWithFollow(follow: nil, track: tracks, locations:["50.87, -1.47,50.95, -1.33"], delimited: false, stallWarnings: true, progress: {
-            (status: Dictionary<String, JSONValue>?) in
-            
-            println(status)
-            
-            }, stallWarningHandler: {
-                (code: String?, message: String?, percentFull: Int?) in
-                
-                print(percentFull)
-                
-            }, failure: { error in
-                println(error)
-        })
 
     }
-    
-    //MARK:- Table View Data Source & Delegate
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tweet = tweets[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TWTRTweetTableViewCell
-        //cell.tweetView.delegate = self
-        return cell
-    }
-    
-    
 }
