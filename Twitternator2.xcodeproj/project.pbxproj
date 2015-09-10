@@ -37,6 +37,9 @@
 		6401446C1B9E3A1C00FCBE29 /* SwifterUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144501B9E3A1C00FCBE29 /* SwifterUsers.swift */; };
 		640144731B9F643100FCBE29 /* SwipeableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144721B9F643100FCBE29 /* SwipeableCell.swift */; };
 		640144761B9F8D5A00FCBE29 /* UIView+Debugging.m in Sources */ = {isa = PBXBuildFile; fileRef = 640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */; };
+		6401449E1BA0A68D00FCBE29 /* StreamingTwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6401449D1BA0A68D00FCBE29 /* StreamingTwitterAuth.swift */; };
+		640144A21BA0A94800FCBE29 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144A11BA0A94800FCBE29 /* CustomTextfield.swift */; };
+		640144A51BA0B09200FCBE29 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640144A41BA0B09200FCBE29 /* SweetAlert.swift */; };
 		64C76C6B1B9E03D90057FCAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6A1B9E03D90057FCAC /* AppDelegate.swift */; };
 		64C76C6E1B9E03D90057FCAC /* Twitternator2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6C1B9E03D90057FCAC /* Twitternator2.xcdatamodeld */; };
 		64C76C701B9E03D90057FCAC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C76C6F1B9E03D90057FCAC /* LoginViewController.swift */; };
@@ -96,6 +99,9 @@
 		640144721B9F643100FCBE29 /* SwipeableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeableCell.swift; sourceTree = "<group>"; };
 		640144741B9F8D5A00FCBE29 /* UIView+Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Debugging.h"; sourceTree = "<group>"; };
 		640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Debugging.m"; sourceTree = "<group>"; };
+		6401449D1BA0A68D00FCBE29 /* StreamingTwitterAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamingTwitterAuth.swift; sourceTree = "<group>"; };
+		640144A11BA0A94800FCBE29 /* CustomTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
+		640144A41BA0B09200FCBE29 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = "../../../../Downloads/SweetAlert-iOS-master/SweetAlert/SweetAlert.swift"; sourceTree = "<group>"; };
 		64C76C651B9E03D90057FCAC /* Twitternator2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitternator2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C76C691B9E03D90057FCAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C76C6A1B9E03D90057FCAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +191,32 @@
 			name = Fabric/Twitter;
 			sourceTree = "<group>";
 		};
+		6401449F1BA0A8F400FCBE29 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				640144A11BA0A94800FCBE29 /* CustomTextfield.swift */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		640144A01BA0A91100FCBE29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				640144A31BA0B08500FCBE29 /* SweetAlert */,
+				640144321B9E3A1C00FCBE29 /* Swifter */,
+				6401446D1B9E3A2800FCBE29 /* Fabric/Twitter */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		640144A31BA0B08500FCBE29 /* SweetAlert */ = {
+			isa = PBXGroup;
+			children = (
+				640144A41BA0B09200FCBE29 /* SweetAlert.swift */,
+			);
+			name = SweetAlert;
+			sourceTree = "<group>";
+		};
 		64C76C5C1B9E03D90057FCAC = {
 			isa = PBXGroup;
 			children = (
@@ -214,8 +246,7 @@
 				64C76C761B9E03D90057FCAC /* LaunchScreen.xib */,
 				64C76C741B9E03D90057FCAC /* Images.xcassets */,
 				64C76C681B9E03D90057FCAC /* Supporting Files */,
-				640144741B9F8D5A00FCBE29 /* UIView+Debugging.h */,
-				640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */,
+				6401449F1BA0A8F400FCBE29 /* CustomViews */,
 			);
 			path = Twitternator2;
 			sourceTree = "<group>";
@@ -223,9 +254,11 @@
 		64C76C681B9E03D90057FCAC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6401449D1BA0A68D00FCBE29 /* StreamingTwitterAuth.swift */,
+				640144741B9F8D5A00FCBE29 /* UIView+Debugging.h */,
+				640144751B9F8D5A00FCBE29 /* UIView+Debugging.m */,
 				64C76C6C1B9E03D90057FCAC /* Twitternator2.xcdatamodeld */,
-				640144321B9E3A1C00FCBE29 /* Swifter */,
-				6401446D1B9E3A2800FCBE29 /* Fabric/Twitter */,
+				640144A01BA0A91100FCBE29 /* Frameworks */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -366,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				640144A21BA0A94800FCBE29 /* CustomTextfield.swift in Sources */,
 				6401445C1B9E3A1C00FCBE29 /* SwifterFavorites.swift in Sources */,
 				6401445E1B9E3A1C00FCBE29 /* SwifterHelp.swift in Sources */,
 				640144511B9E3A1C00FCBE29 /* Dictionary+Swifter.swift in Sources */,
@@ -376,6 +410,7 @@
 				6401445A1B9E3A1C00FCBE29 /* SwifterClientProtocol.swift in Sources */,
 				640144581B9E3A1C00FCBE29 /* SwifterAppOnlyClient.swift in Sources */,
 				64C76C6B1B9E03D90057FCAC /* AppDelegate.swift in Sources */,
+				640144A51BA0B09200FCBE29 /* SweetAlert.swift in Sources */,
 				640144651B9E3A1C00FCBE29 /* SwifterSearch.swift in Sources */,
 				640144731B9F643100FCBE29 /* SwipeableCell.swift in Sources */,
 				640144631B9E3A1C00FCBE29 /* SwifterPlaces.swift in Sources */,
@@ -386,6 +421,7 @@
 				640144561B9E3A1C00FCBE29 /* Swifter.swift in Sources */,
 				640144531B9E3A1C00FCBE29 /* JSON.swift in Sources */,
 				6401445F1B9E3A1C00FCBE29 /* SwifterHTTPRequest.swift in Sources */,
+				6401449E1BA0A68D00FCBE29 /* StreamingTwitterAuth.swift in Sources */,
 				6401446A1B9E3A1C00FCBE29 /* SwifterTrends.swift in Sources */,
 				640144611B9E3A1C00FCBE29 /* SwifterMessages.swift in Sources */,
 				640144681B9E3A1C00FCBE29 /* SwifterSuggested.swift in Sources */,

@@ -11,13 +11,14 @@ import UIKit
 class SwipeableCell: UITableViewCell {
     
     @IBOutlet weak var childContentView: UIView!
+    var initialFrame:CGRect?
     var startingRightLayoutConstraintConstant: CGFloat?
     var panStartPoint:CGPoint?
     var viewStartPoint:CGPoint?
     weak var delegate: SwipeCellDelegate?
     
     // For table view referencing
-    var index:Int?
+    var identifier:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +35,7 @@ class SwipeableCell: UITableViewCell {
             //contentView.layer.removeAllAnimations()
             panStartPoint = pan.locationInView(contentView)
             viewStartPoint = childContentView.center
+            initialFrame = childContentView.frame
             
         case .Changed:
             let deltaX = pan.locationInView(contentView).x - panStartPoint!.x
@@ -57,7 +59,9 @@ class SwipeableCell: UITableViewCell {
                 
                 }, completion: { value in
                     if remove {
-                        self.delegate?.removeCellAtIndex(self.index!)
+                        self.delegate?.removeCellWithID(self.identifier!)
+                        self.childContentView.hidden = true
+                        self.childContentView.frame = self.initialFrame!
                     }
             })
             
@@ -74,5 +78,5 @@ class SwipeableCell: UITableViewCell {
 }
 
 protocol SwipeCellDelegate: class {
-    func removeCellAtIndex(index:Int)
+    func removeCellWithID(identifier:String)
 }

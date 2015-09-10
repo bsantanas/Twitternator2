@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+// with this you can add a breakpoint and call po view.recursiveDescription() from the lldb
 @interface UIView (Debugging)
-- (id)recursiveDescription;
+//- (id)recursiveDescription;
 @end

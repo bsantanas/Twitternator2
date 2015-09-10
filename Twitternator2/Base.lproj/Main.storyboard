@@ -17,71 +17,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-9g-Z0R">
-                                <rect key="frame" x="262" y="542" width="76" height="38"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="21"/>
-                                <state key="normal" title="My Feed">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showUserStream:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REs-wr-KHv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHA-jN-JDp">
-                                <rect key="frame" x="223" y="438" width="154" height="39"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
-                                <state key="normal" title="Random Stream!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showRandomStream:" destination="BYZ-38-t0r" eventType="touchUpInside" id="544-Cs-hbb"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3y-kM-YHn">
-                                <rect key="frame" x="293" y="498" width="15" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuV-sl-t8D">
-                                <rect key="frame" x="0.0" y="-20" width="600" height="437"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5b-CP-jq4" userLabel="Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-qP-swh">
+                                        <rect key="frame" x="225" y="110" width="150" height="150"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="Hla-Lj-MfW"/>
+                                            <constraint firstAttribute="height" constant="150" id="rK6-Z1-7gb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-qP-swh">
-                                <rect key="frame" x="231" y="67" width="150" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Hla-Lj-MfW"/>
-                                    <constraint firstAttribute="height" constant="150" id="rK6-Z1-7gb"/>
+                                    <constraint firstItem="Bpq-qP-swh" firstAttribute="top" secondItem="l5b-CP-jq4" secondAttribute="top" constant="110" id="isz-BE-vjZ"/>
+                                    <constraint firstAttribute="centerX" secondItem="Bpq-qP-swh" secondAttribute="centerX" id="rpy-NM-2hH"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3k9-r2-PVD" customClass="CustomTextfield" customModule="Twitternator2" customModuleProvider="target">
+                                <rect key="frame" x="286" y="516" width="29" height="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="q3y-kM-YHn" secondAttribute="centerX" id="02j-Bi-aXh"/>
-                            <constraint firstAttribute="centerX" secondItem="kuV-sl-t8D" secondAttribute="centerX" id="4A1-w8-nIh"/>
-                            <constraint firstAttribute="centerX" secondItem="OXq-9g-Z0R" secondAttribute="centerX" id="4nb-Mj-bvr"/>
-                            <constraint firstItem="q3y-kM-YHn" firstAttribute="top" secondItem="gHA-jN-JDp" secondAttribute="bottom" constant="21" id="EdF-fg-NTy"/>
-                            <constraint firstAttribute="centerX" secondItem="Bpq-qP-swh" secondAttribute="centerX" constant="-6" id="PC7-by-w4U"/>
-                            <constraint firstAttribute="centerX" secondItem="gHA-jN-JDp" secondAttribute="centerX" id="Zac-hk-i6f"/>
-                            <constraint firstItem="kuV-sl-t8D" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="htH-4c-zUs"/>
-                            <constraint firstItem="gHA-jN-JDp" firstAttribute="top" secondItem="kuV-sl-t8D" secondAttribute="bottom" constant="21" id="igz-Tm-IP5"/>
-                            <constraint firstItem="Bpq-qP-swh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="67" id="itZ-Ss-Wkm"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OXq-9g-Z0R" secondAttribute="bottom" constant="20" id="kiD-lI-6a8"/>
-                            <constraint firstItem="kuV-sl-t8D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="z2P-T3-slQ"/>
-                            <constraint firstItem="OXq-9g-Z0R" firstAttribute="top" secondItem="q3y-kM-YHn" secondAttribute="bottom" constant="23" id="zGl-YD-LFe"/>
+                            <constraint firstAttribute="centerX" secondItem="l5b-CP-jq4" secondAttribute="centerX" id="1eD-0t-wcQ"/>
+                            <constraint firstAttribute="height" secondItem="l5b-CP-jq4" secondAttribute="height" id="H5k-ru-yZ7"/>
+                            <constraint firstAttribute="width" secondItem="l5b-CP-jq4" secondAttribute="width" id="QhP-71-IKQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3k9-r2-PVD" secondAttribute="bottom" constant="54" id="Rtd-3K-5bt"/>
+                            <constraint firstAttribute="centerY" secondItem="l5b-CP-jq4" secondAttribute="centerY" id="WYY-Bp-kPq"/>
+                            <constraint firstAttribute="centerX" secondItem="3k9-r2-PVD" secondAttribute="centerX" id="YKU-co-pNd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gOQ-Bo-eDe"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <segue destination="iWk-sO-aV3" kind="show" identifier="ShowUserStream" id="Dhd-gp-lCs"/>
-                        <segue destination="iWk-sO-aV3" kind="show" identifier="ShowRandomStream" id="IDd-jL-tV3"/>
+                        <outlet property="textField" destination="3k9-r2-PVD" id="2zy-PD-vRh"/>
+                        <segue destination="iWk-sO-aV3" kind="show" identifier="ShowTweets" id="rdk-if-zMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="435" y="89"/>
+            <point key="canvasLocation" x="264" y="90"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="jLw-va-tqc">
@@ -187,7 +167,4 @@
     <resources>
         <image name="backarrow" width="25" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="IDd-jL-tV3"/>
-    </inferredMetricsTieBreakers>
 </document>
