@@ -9,7 +9,7 @@
 import UIKit
 import TwitterKit
 
-class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate {
+class FeedViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView:UITableView!
     var textToSearch:String?
@@ -20,7 +20,7 @@ class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableVie
         super.viewDidLoad()
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: "TweetCell")
+        tableView.registerClass(SwipeableCell.self, forCellReuseIdentifier: "TweetCell")
         getTweets()
     }
     
@@ -44,19 +44,19 @@ class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableVie
                             self.tweets.append(tweet)
                             let twtview = TWTRTweetView(tweet: tweet, style: .Compact)
                             self.twtviews.append(twtview)
-                            }
+                        }
                         println("Fetched \(self.tweets.count) tweets")
                         self.tableView.reloadData()
                     }
-                
-                
+                    
+                    
                 }
             }
             else {
                 println("Error: \(connectionError)")
             }
         }
-
+        
     }
     
     
@@ -67,23 +67,28 @@ class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let tweet = tweets[indexPath.row]
+        // Configure cell
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! SwipeableCell
-        cell.childContentView.hidden = false
-        //let twtView = TWTRTweetView(tweet: tweet, style: .Compact)
-        let twtView = twtviews[indexPath.row]
-        twtView.frame = cell.childContentView.bounds
-        cell.childContentView.addSubview(twtView)
+        let tweet = tweets[indexPath.row]
+        cell.configureWithTweet(tweet)
         cell.identifier = tweet.tweetID
-        cell.delegate = self
-        //cell.tweetView.delegate = self
+        
+        // Add gesture recognizer
+        if cell.gestureRecognizers == nil { // TweetViews come with 1 gesture recognizer
+            let pan = UIPanGestureRecognizer(target: self, action: "panTweetView:")
+            pan.delegate = self
+            cell.addGestureRecognizer(pan)
+            cell.tweetView.userInteractionEnabled = true
+        }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = tweets[indexPath.row]
-        return twtviews[indexPath.row].bounds.height
-        //return TWTRTweetTableViewCell.heightForTweet(tweet, width: CGRectGetWidth(self.view.bounds))
+        //return twtviews[indexPath.row].bounds.height
+        return TWTRTweetTableViewCell.heightForTweet(tweet, width: CGRectGetWidth(self.view.bounds))
+        
     }
     
     var previous = "0"
@@ -96,11 +101,71 @@ class FeedViewController: UIViewController, NSURLSessionDataDelegate, UITableVie
             }
         }
     }
-}
-
-//MARK:- Extensions: SwipeCellDelegate
-extension FeedViewController: SwipeCellDelegate {
+    
+    
+    //MARK:- UIGestureRecognizer methods
+    
+    var initialFrame:CGRect?
+    var startingRightLayoutConstraintConstant: CGFloat?
+    var panStartPoint:CGPoint?
+    var viewStartPoint:CGPoint?
+    
+    func panTweetView(pan:UIPanGestureRecognizer) {
+        let cell = pan.view as! SwipeableCell
+        
+        switch pan.state {
+            
+        case .Began:
+            //contentView.layer.removeAllAnimations()
+            panStartPoint = pan.locationInView(cell.contentView)
+            viewStartPoint = cell.tweetView.center
+            initialFrame = cell.tweetView.frame
+            
+        case .Changed:
+            let deltaX = pan.locationInView(cell.contentView).x - panStartPoint!.x
+            let y = cell.tweetView.bounds.midY
+            cell.tweetView.center = CGPoint(x: viewStartPoint!.x + deltaX, y: y)
+            
+        case .Ended:
+            let invOffset = cell.tweetView.frame.width - cell.tweetView.frame.origin.x
+            var center = cell.contentView.center
+            var remove = false
+            var duration:NSTimeInterval = 1
+            
+            if invOffset < 100 { // pulled to the right
+                center.x = cell.contentView.frame.width * 2 // remove from screen
+                remove = true
+                duration = 0.4
+            }
+            
+            UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0, options: .AllowUserInteraction, animations: {
+                
+                cell.tweetView.center = center
+                
+                if remove {
+                    self.removeCellWithID(cell.identifier!)
+                }
+                
+                }, completion: { value in
+                    
+                    if remove {
+                        //cell.tweetView.hidden = true
+                        cell.tweetView.frame = self.initialFrame!
+                    }
+            })
+            
+        default:
+            // Cancelled
+            println("Gesture recognizer was cancelled")
+        }
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     func removeCellWithID(identifier: String) {
+        
         if let found = find(tweets.map({ $0.tweetID }), identifier) {
             tweets.removeAtIndex(found)
             tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: found, inSection: 0)], withRowAnimation: .Top)
@@ -108,5 +173,6 @@ extension FeedViewController: SwipeCellDelegate {
             println("tweet not found!!! weird")
         }
     }
+    
 }
 

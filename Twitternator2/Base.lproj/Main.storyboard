@@ -83,22 +83,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cga-uH-kLf" id="DcG-yq-Vd1">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyr-KJ-3Ru">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="95"/>
-                                                    <color key="backgroundColor" red="0.47290908370000001" green="1" blue="0.56905666629999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="lyr-KJ-3Ru" firstAttribute="leading" secondItem="DcG-yq-Vd1" secondAttribute="leadingMargin" constant="-8" id="4h6-Y0-hDs"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lyr-KJ-3Ru" secondAttribute="bottom" constant="-8" id="T96-wB-uLt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="lyr-KJ-3Ru" secondAttribute="trailing" constant="-8" id="h3U-sM-5nH"/>
-                                                <constraint firstItem="lyr-KJ-3Ru" firstAttribute="top" secondItem="DcG-yq-Vd1" secondAttribute="topMargin" constant="-8" id="uvu-JP-IPf"/>
-                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="childContentView" destination="lyr-KJ-3Ru" id="IhX-gK-3o7"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
